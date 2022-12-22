@@ -91,11 +91,17 @@ class Lexer:
 
 if (__name__ == "__main__" and not (len(sys.argv) < 2)):
     lexer = Lexer(sys.argv[1])
-    print(lexer.tokenizer())
+    tokens = lexer.tokenizer()
+    print(tokens)
+
+    parser = Parser(tokens)
+    ast = parser.parse()
+
+    print(ast)
 
 else:
     print("""\
 
-		Usage: python3 lexer.py filename.sft
+        Usage: python3 lexer.py filename.sft
 
-	""")
+    """)
